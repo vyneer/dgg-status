@@ -2,6 +2,7 @@
 	let mutelinksUrl = "https://vyneer.me/tools/mutelinks";
 	let promise = checkMutelinks();
 	let activeClass = "regular";
+	let dataRaw = [];
 	export let successCheck = false;
 
 	async function checkMutelinks() {
@@ -9,7 +10,8 @@
 		if (response.ok) {
 			// test line
 			// let data = JSON.parse('{"status": "all","time": "2020-10-09T05:27:10.291000+00:00"}');
-			let data = await response.json();
+			dataRaw = await response.json();
+			let data = (dataRaw.length > 0) ? dataRaw[0] : [];
 			if (data.status === "on" || data.status === "all") {
 				successCheck = true;
 				activeClass = "active";
