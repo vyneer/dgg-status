@@ -15,7 +15,7 @@
 		let response = await fetch(nukesUrl);
 		if (response.ok) {
 			// test line
-			// data = JSON.parse('[{"time":"2020-10-10T15:06:11.291000+00:00","word":"PEPE wins","type":"meganuke"}]');
+			// data = JSON.parse('[{"time":"2020-10-11T23:04:00.291000+00:00","word":"PEPE wins","type":"meganuke"}]');
 			data = await response.json();
 			if (data.length > 0) {
 				successCheck = true;
@@ -37,7 +37,7 @@
 	let calcDuration = (time) => {
 		let currentTime = dayjs();
 		let nukeTime = dayjs(time);
-		let expiryTime = nukeTime.add(5, 'minutes');
+		let expiryTime = nukeTime.add(5, 'minutes').add(4, 'seconds');
 		let timeDiff = expiryTime.diff(currentTime);
 		let timeDur = dayjs.duration(timeDiff);
 		// this is a workaround since theres no way to format durations in dayjs, very scuffed
