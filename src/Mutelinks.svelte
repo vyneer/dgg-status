@@ -28,11 +28,11 @@
 	<div class="{activeClass === 'regular' ? 'status-text' : 'status-text active'}">Loading results...</div>	
 {:then data}
 	{#if data.status === "all"}
-		<div class="{activeClass === 'regular' ? 'status-text' : 'status-text active'}">ALL links are muted!</div>
+		<div class="{activeClass === 'regular' ? 'status-text' : 'status-text active'}">ALL links will get you muted for {data.duration}!</div>
 	{:else if data.status === "on"}
-		<div class="{activeClass === 'regular' ? 'status-text' : 'status-text active'}">Links tagging {data.user} are muted!</div>
+		<div class="{activeClass === 'regular' ? 'status-text' : 'status-text active'}">Links tagging {data.user} will get you muted for {data.duration}!</div>
 	{:else}
-		<div class="{activeClass === 'regular' ? 'status-text' : 'status-text active'}">Links are NOT muted!</div>
+		<div class="{activeClass === 'regular' ? 'status-text' : 'status-text active'}">Links will NOT get you muted!</div>
 	{/if}
 {:catch error}
 	{#if error.message === "429"}

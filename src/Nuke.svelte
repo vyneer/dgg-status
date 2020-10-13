@@ -54,11 +54,11 @@
 		{#each data as result}
 			<div class="status-text">
 				{#if !result.timeLeft}
-					{result.word} ({result.type}): getting time...
+					{result.word} ({result.type}d for {result.duration}): getting time...
 				{:else if Number.parseInt(result.timeLeft.split(":")[0]) > "5" || Number.parseInt(result.timeLeft.split(":")[0]) === "0"}
-					{result.word} ({result.type}): done!
+					{result.word} ({result.type}d for {result.duration}): done!
 				{:else}
-					{result.word} ({result.type}): {result.timeLeft} left
+					{result.word} ({result.type}d for {result.duration}): {result.timeLeft} left
 				{/if}
 				
 			</div>
