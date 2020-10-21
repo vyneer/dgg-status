@@ -1,21 +1,14 @@
 <script>
 	import Nuke from "./Nuke.svelte";
-	import Mutelinks from "./Mutelinks.svelte";
 	let nukeSuccess;
-	let linksSuccess;
 
 	let src1;
 	let src1_nuked;
-	let src2;
-	let src2_drowned;
 
 	let loadImages = () => {
 		let src1_number = getRandomInt(3);
-		let src2_number = getRandomInt(3);
 		src1 = `/status/images/chuurch${src1_number}.png`;
 		src1_nuked = `/status/images/nuked_chuurch${src1_number}.png`;
-		src2 = `/status/images/chuurch${src2_number}.png`;
-		src2_drowned = `/status/images/drowned_chuurch${src2_number}.png`;
 	}
 
 	function getRandomInt(max) {
@@ -41,14 +34,6 @@
 		{/if}
 		<Nuke bind:successCheck={nukeSuccess}/>
 	</div>
-	<div class="status-element">
-		{#if linksSuccess}
-			<img src={src2_drowned} alt="Chuurch Meme" class="status-img">
-		{:else}
-			<img src={src2} alt="Chuurch Meme" class="status-img">
-		{/if}
-		<Mutelinks bind:successCheck={linksSuccess}/>
-	</div>
 </main>
 
 <style>
@@ -71,7 +56,7 @@
 		padding: 40px;
 		max-width: 640px;
 		margin: 0 auto;
-		justify-content: space-between;
+		justify-content: center;
 	}
 
 	.status-img {
