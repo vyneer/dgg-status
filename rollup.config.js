@@ -3,9 +3,6 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
-import replace from '@rollup/plugin-replace';
-import htmlTemplate from 'rollup-plugin-generate-html-template';
-import cleaner from 'rollup-plugin-cleaner';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -36,35 +33,17 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/main.js'
+		file: 'public/build/bundle.js'
 	},
 	plugins: [
-		cleaner({
-			targets: [
-			  'public/build/'
-			]
-		}),
-
 		svelte({
 			// enable run-time checks when not in production
 			dev: !production,
 			// we'll extract any component CSS out into
 			// a separate file - better for performance
 			css: css => {
-				css.write('main.css');
+				css.write('bundle.css');
 			}
-		}),
-
-		htmlTemplate({
-			template: 'src/template.html',
-			target: 'public/index.html',
-			replaceVars: {
-				'__buildPath__' : '.',
-			}
-		}),
-
-		replace({
-			__buildPath__: '.' 
 		}),
 
 		// If you have external dependencies installed from
