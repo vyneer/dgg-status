@@ -7,8 +7,8 @@
 
 	let loadImages = () => {
 		let src1_number = getRandomInt(3);
-		src1 = `/status/images/chuurch${src1_number}.png`;
-		src1_nuked = `/status/images/nuked_chuurch${src1_number}.png`;
+		src1 = `__buildPath__/images/chuurch${src1_number}.png`;
+		src1_nuked = `__buildPath__/images/nuked_chuurch${src1_number}.png`;
 	}
 
 	function getRandomInt(max) {
@@ -20,7 +20,7 @@
 
 
 <header>
-	<img src="/status/images/cam.png" alt="Camera" class="header-img">
+	<img src="__buildPath__/images/cam.png" alt="Camera" class="header-img">
 
 	<h1>d.gg chat status</h1>
 </header>

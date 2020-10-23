@@ -33,10 +33,11 @@ function serve() {
 export default {
 	input: 'src/main.js',
 	output: {
-		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/main.js'
+		dir: 'public/build',
+		entryFileNames: '[name].[hash].js',
+		assetFileNames: '[name].[hash].[ext]'
 	},
 	plugins: [
 		cleaner({
@@ -59,12 +60,12 @@ export default {
 			template: 'src/template.html',
 			target: 'public/index.html',
 			replaceVars: {
-				'__buildPath__' : '.',
+				'__buildPath__' : '/status',
 			}
 		}),
 
 		replace({
-			__buildPath__: '.' 
+			__buildPath__: '/status' 
 		}),
 
 		// If you have external dependencies installed from

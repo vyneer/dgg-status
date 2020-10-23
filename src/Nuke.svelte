@@ -15,7 +15,7 @@
 		let response = await fetch(nukesUrl);
 		if (response.ok) {
 			// test line
-			// data = JSON.parse('[{"time":"2020-10-11T23:04:00.291000+00:00","word":"PEPE wins","type":"meganuke"}]');
+			// data = JSON.parse('[{"time":"2020-10-23T03:03:00.291000+00:00","word":"PEPE wins","type":"MEGANUKE","duration":"10m"}]');
 			data = await response.json();
 			if (data.length > 0) {
 				successCheck = true;
@@ -54,11 +54,11 @@
 		{#each data as result}
 			<div class="status-text">
 				{#if !result.timeLeft}
-					{result.word} ({result.type.toLowercase()}d for {result.duration}): getting time...
+					{result.word} ({result.type.toString().toLowerCase()}d for {result.duration}): getting time...
 				{:else if Number.parseInt(result.timeLeft.split(":")[0]) > "5" || Number.parseInt(result.timeLeft.split(":")[0]) === "0"}
-					{result.word} ({result.type.toLowercase()}d for {result.duration}): done!
+					{result.word} ({result.type.toString().toLowerCase()}d for {result.duration}): done!
 				{:else}
-					{result.word} ({result.type.toLowercase()}d for {result.duration}): {result.timeLeft} left
+					{result.word} ({result.type.toString().toLowerCase()}d for {result.duration}): {result.timeLeft} left
 				{/if}
 				
 			</div>
