@@ -8,6 +8,8 @@ body {
 	margin: 0;
 	padding: 8px;
 	box-sizing: border-box;
+	display: flex;
+  	flex-direction: column;
 }
 
 .status-text {
@@ -16,6 +18,22 @@ body {
 	font-size: larger;
 	width: 250px;
 	font-family: "Roboto",Helvetica,"Trebuchet MS",Verdana,sans-serif;
+}
+
+.status-text-small {
+	color: white;
+	padding-top: 1em;
+	font-size: 14px;
+	width: 250px;
+	font-family: "Roboto",Helvetica,"Trebuchet MS",Verdana,sans-serif;
+}
+
+a:visited {
+	color: chocolate;
+}
+
+a:link {
+	color: cornflowerblue;
 }
 
 .active {
