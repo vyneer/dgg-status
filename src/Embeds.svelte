@@ -5,10 +5,24 @@
 	let data5m = [];
 	let data30m = [];
 	export let successCheck = false;
+	export const onlineCheck = fetchOnline();
+
+	async function fetchOnline() {
+		let onlineStatusUrl = `https://vyneer.me/userinfo?user_login=Destiny`;
+		let responseOnlineStatus = await fetch(onlineStatusUrl);
+		let dataOnlineStatus = await responseOnlineStatus.json();
+		if (responseOnlineStatus.ok) {
+			if (dataOnlineStatus.data.length > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
 
 	async function fetchEmbeds(time) {
 		let data;
-		let embedsUrl = `https://vyneer.me/tools/embeds${time}`
+		let embedsUrl = `https://vyneer.me/tools/embeds${time}`;
 		let response = await fetch(embedsUrl);
 		if (response.ok) {
 			// test line

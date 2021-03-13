@@ -12,20 +12,27 @@ body {
   	flex-direction: column;
 }
 
-.status-text {
+.status-text, .status-text-no-width {
 	color: white;
-	padding-top: 1em;
 	font-size: larger;
+	font-family: "Roboto",Helvetica,"Trebuchet MS",Verdana,sans-serif;
+}
+
+.status-text {
+	padding-top: 1em;
 	width: 250px;
+}
+
+.status-text-small, .status-text-small-no-width {
+	text-align: center;
+	color: white;
+	font-size: 14px;
 	font-family: "Roboto",Helvetica,"Trebuchet MS",Verdana,sans-serif;
 }
 
 .status-text-small {
-	color: white;
 	padding-top: 1em;
-	font-size: 14px;
 	width: 250px;
-	font-family: "Roboto",Helvetica,"Trebuchet MS",Verdana,sans-serif;
 }
 
 a:visited {

@@ -5,6 +5,7 @@
 	let nukeSuccess;
 	let linksSuccess;
 	let embedsSuccess;
+	let onlineSuccess;
 
 	let src1;
 	let src1_nuked;
@@ -27,6 +28,11 @@
 
 	function getRandomInt(max) {
   		return Math.floor(Math.random() * Math.floor(max));
+	}
+
+	function changePic() {
+		src3 = `/status/images/online.png`;
+		src3_embed = `/status/images/online.png`;
 	}
 
 	loadImages();
@@ -59,10 +65,26 @@
 	<div class="status-element">
 		{#if embedsSuccess}
 			<img src={src3_embed} alt="Happy Peepo watching a stream" class="status-img">
+		{#await onlineSuccess}
+			<div class="status-text-small-no-width">Loading Steven's online status...</div>
+		{:then result}
+			{#if result}
+				{changePic() || ""}
+				<a href="https://destiny.gg/bigscreen"><div class="status-text-no-width active">Steven is online!</div></a>
+			{/if}
+		{/await}
 		{:else}
 			<img src={src3} alt="Sad peepo looking at Destiny's offline screen" class="status-img">
+			{#await onlineSuccess}
+			<div class="status-text-small-no-width">Loading Steven's online status...</div>
+			{:then result}
+				{#if result}
+					{changePic() || ""}
+					<a href="https://destiny.gg/bigscreen"><div class="status-text-no-width active">Steven is online!</div></a>
+				{/if}
+			{/await}
 		{/if}
-		<Embeds bind:successCheck={embedsSuccess}/>
+		<Embeds bind:successCheck={embedsSuccess} bind:onlineCheck={onlineSuccess}/>
 	</div>
 </main>
 
