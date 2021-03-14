@@ -111,9 +111,10 @@
 		flex: 1 0 auto;
 		text-align: center;
 		padding: 40px;
-		max-width: 640px;
+		max-width: 1020px;
 		margin: 0 auto;
 		justify-content: center;
+		flex-wrap: wrap;
 	}
 
 	.status-img {
@@ -140,10 +141,6 @@
 	}
 
 	@media (max-width: 600px) {
-		main {
-			display: block !important;
-		}
-
 		.status-element {
 			padding-bottom: 1em;
 		}

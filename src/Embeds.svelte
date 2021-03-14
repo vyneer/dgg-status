@@ -49,6 +49,12 @@
 	#embeds {
 		display: flex;
 	}
+
+	@media (max-width: 600px) {
+		#embeds {
+			display: block;
+		}
+	}
 </style>
 
 <div id="embeds">
