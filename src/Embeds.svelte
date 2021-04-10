@@ -8,7 +8,7 @@
 	export const onlineCheck = fetchOnline();
 
 	async function fetchOnline() {
-		let onlineStatusUrl = `https://vyneer.me/userinfo?user_login=Destiny`;
+		let onlineStatusUrl = `https://vyneer.me/vods/userinfo?user_login=Destiny`;
 		let responseOnlineStatus = await fetch(onlineStatusUrl);
 		let dataOnlineStatus = await responseOnlineStatus.json();
 		if (responseOnlineStatus.ok) {
