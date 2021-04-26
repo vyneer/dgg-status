@@ -1,9 +1,13 @@
 <script>
+	import dayjs from 'dayjs';
+
 	let promise5m = fetchEmbeds("5");
 	let promise30m = fetchEmbeds("30");
+	let promiseLast = fetchEmbeds("last");
 	let activeClass = "regular";
 	let data5m = [];
 	let data30m = [];
+	let dataLast = [];
 	export let successCheck = false;
 	export const onlineCheck = fetchOnline();
 
@@ -34,8 +38,10 @@
 			}
 			if (time == "5") {
 				data5m = data;
-			} else {
+			} else if (time == "30") {
 				data30m = data;
+			} else {
+				dataLast = data;
 			}
 			return response.ok;
 		} else {
@@ -50,7 +56,7 @@
 		display: flex;
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 855px) {
 		#embeds {
 			display: block;
 		}
@@ -94,6 +100,29 @@
 				{/each}
 			{:else}
 				<div class="status-text-small">Nobody embedded anything in the last 30 mins :(</div>
+			{/if}
+		{:catch error}
+			{#if error.message === "429"}
+				<div class="{activeClass === 'regular' ? 'status-text' : 'status-text active'}">{error} Too Many Requests! <br> Try again a bit later :)</div>
+			{:else}
+				<div class="{activeClass === 'regular' ? 'status-text' : 'status-text active'}">{error}</div>
+			{/if}
+		{/await}
+	</div>
+
+	<div>
+		<div class="status-text">Last 5 embeds:</div>
+		{#await promiseLast}
+			<div class="{activeClass === 'regular' ? 'status-text' : 'status-text active'}">Loading results...</div>	
+		{:then}
+			{#if dataLast.length != 0}
+				{#each dataLast as result}
+					<div class="status-text-small">
+						({dayjs.unix(result[0]).format("HH:mm:ss")}) <a rel="stylesheet" href="https://destiny.gg/bigscreen{result[1]}">{result[1]}</a>
+					</div>
+				{/each}
+			{:else}
+				<div class="status-text-small">The API didn't return anything :(</div>
 			{/if}
 		{:catch error}
 			{#if error.message === "429"}
