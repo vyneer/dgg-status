@@ -18,12 +18,12 @@
 		let src1_number = getRandomInt(3);
 		let src2_number = getRandomInt(3);
 		let src3_number = getRandomInt(3);
-		src1 = `images/chuurch${src1_number}.png`;
-		src1_nuked = `images/nuked_chuurch${src1_number}.png`;
-		src2 = `images/chuurch${src2_number}.png`;
-		src2_drowned = `images/drowned_chuurch${src2_number}.png`;
-		src3 = `images/offline.png`;
-		src3_embed = `images/embed${src3_number}.png`;
+		src1 = `/status/images/chuurch${src1_number}.png`;
+		src1_nuked = `/status/images/nuked_chuurch${src1_number}.png`;
+		src2 = `/status/images/chuurch${src2_number}.png`;
+		src2_drowned = `/status/images/drowned_chuurch${src2_number}.png`;
+		src3 = `/status/images/offline.png`;
+		src3_embed = `/status/images/embed${src3_number}.png`;
 	}
 
 	function getRandomInt(max) {
@@ -31,8 +31,8 @@
 	}
 
 	function changePic() {
-		src3 = `images/online.png`;
-		src3_embed = `images/online.png`;
+		src3 = `/status/images/online.png`;
+		src3_embed = `/status/images/online.png`;
 	}
 
 	loadImages();
@@ -40,7 +40,7 @@
 
 
 <header>
-	<img src="images/cam.png" alt="Camera" class="header-img">
+	<img src="/status/images/cam.png" alt="Camera" class="header-img">
 
 	<h1>d.gg chat status</h1>
 </header>
