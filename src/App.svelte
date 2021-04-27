@@ -2,9 +2,11 @@
 	import Nuke from "./Nuke.svelte";
 	import Mutelinks from "./Mutelinks.svelte";
 	import Embeds from "./Embeds.svelte";
+	import Phrases from "./Phrases.svelte";
 	let nukeSuccess;
 	let linksSuccess;
 	let embedsSuccess;
+	let phrasesSuccess;
 	let onlineSuccess;
 
 	let src1;
@@ -13,17 +15,20 @@
 	let src2_drowned;
 	let src3;
 	let src3_embed;
+	let src4;
 
 	let loadImages = () => {
 		let src1_number = getRandomInt(3);
 		let src2_number = getRandomInt(3);
 		let src3_number = getRandomInt(3);
+		let src4_number = getRandomInt(3);
 		src1 = `/status/images/chuurch${src1_number}.png`;
 		src1_nuked = `/status/images/nuked_chuurch${src1_number}.png`;
 		src2 = `/status/images/chuurch${src2_number}.png`;
 		src2_drowned = `/status/images/drowned_chuurch${src2_number}.png`;
 		src3 = `/status/images/offline.png`;
 		src3_embed = `/status/images/embed${src3_number}.png`;
+		src4 = `/status/images/chuurch${src4_number}.png`;
 	}
 
 	function getRandomInt(max) {
@@ -63,6 +68,10 @@
 		<Mutelinks bind:successCheck={linksSuccess}/>
 	</div>
 	<div class="status-element">
+		<img src={src4} alt="Chuurch Meme" class="status-img">
+		<Phrases bind:successCheck={phrasesSuccess}></Phrases>
+	</div>
+	<div class="status-element">
 		{#if embedsSuccess}
 			<img src={src3_embed} alt="Happy Peepo watching a stream" class="status-img">
 		{#await onlineSuccess}
@@ -89,7 +98,8 @@
 </main>
 
 <footer class="status-text-small">
-	if something is wrong/broken msg vyneer in dgg PepoComfy
+	if something is wrong/broken msg vyneer in dgg PepoComfy <br>
+	huge thanks to Mitch in dgg chat for the initial phrases data!
 </footer>
 
 <style>
