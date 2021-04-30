@@ -75,7 +75,7 @@
 			{#if data5m.length != 0}
 				{#each data5m as result}
 					<div class="status-text-small">
-						<a rel="stylesheet" href="https://destiny.gg/bigscreen{result[0]}">{result[0]}</a> ({result[1]} {#if result[1] == 1} embed{:else} embeds{/if})
+						<a rel="stylesheet" href="https://destiny.gg/bigscreen{result.link}">{result.link}</a> ({result.count} {#if result.count == 1} embed{:else} embeds{/if})
 					</div>
 				{/each}
 			{:else}
@@ -98,7 +98,7 @@
 			{#if data30m.length != 0}
 				{#each data30m as result}
 					<div class="status-text-small">
-						<a rel="stylesheet" href="https://destiny.gg/bigscreen{result[0]}">{result[0]}</a> ({result[1]} {#if result[1] == 1} embed{:else} embeds{/if})
+						<a rel="stylesheet" href="https://destiny.gg/bigscreen{result.link}">{result.link}</a> ({result.count} {#if result.count == 1} embed{:else} embeds{/if})
 					</div>
 				{/each}
 			{:else}
@@ -121,7 +121,7 @@
 			{#if dataLast.length != 0}
 				{#each dataLast as result}
 					<div class="status-text-small">
-						({dayjs.unix(result[0]).format("HH:mm:ss")}) <a rel="stylesheet" href="https://destiny.gg/bigscreen{result[1]}">{result[1]}</a>
+						({dayjs.unix(result.timestamp).format("HH:mm:ss")}) <a rel="stylesheet" href="https://destiny.gg/bigscreen{result.link}">{result.link}</a>
 					</div>
 				{/each}
 			{:else}
