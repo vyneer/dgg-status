@@ -6,7 +6,7 @@
 
 	async function fetchPhrases() {
 		let data;
-		let embedsUrl = `https://vyneer.me/tools/phrases`;
+		let embedsUrl = `https://vyneer.me/tools/phrases?count=5`;
 		let response = await fetch(embedsUrl);
 		if (response.ok) {
 			// test line

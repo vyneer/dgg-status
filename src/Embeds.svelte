@@ -26,7 +26,10 @@
 
 	async function fetchEmbeds(time) {
 		let data;
-		let embedsUrl = `https://vyneer.me/tools/embeds${time}`;
+		let embedsUrl = `https://vyneer.me/tools/embeds?t=${time}`;
+		if (time == "last") {
+			embedsUrl = `https://vyneer.me/tools/embeds/last`;
+		}
 		let response = await fetch(embedsUrl);
 		if (response.ok) {
 			// test line
