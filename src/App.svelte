@@ -45,9 +45,10 @@
 
 
 <header>
-	<img src="/status/images/cam.png" alt="Camera" class="header-img">
-
+	<a href="https://vyneer.me"><i class="home-button fas fa-home"></i></a>
 	<h1>d.gg chat status</h1>
+
+	<img src="/status/images/cam.png" alt="Camera" class="header-img">
 </header>
 
 <main>
@@ -73,7 +74,7 @@
 	</div>
 	<div class="status-element">
 		{#if embedsSuccess}
-			<img src={src3_embed} alt="Happy Peepo watching a stream" class="status-img">
+			<img src={src3_embed} alt="Happy Peepo watching a stream" class="status-img-lower">
 		{#await onlineSuccess}
 			<div class="status-text-small-no-width">Loading Steven's online status...</div>
 		{:then result}
@@ -83,7 +84,7 @@
 			{/if}
 		{/await}
 		{:else}
-			<img src={src3} alt="Sad peepo looking at Destiny's offline screen" class="status-img">
+			<img src={src3} alt="Sad peepo looking at Destiny's offline screen" class="status-img-lower">
 			{#await onlineSuccess}
 			<div class="status-text-small-no-width">Loading Steven's online status...</div>
 			{:then result}
@@ -109,7 +110,7 @@
 
 	h1 {
 		margin: auto;
-		padding-right: 5%;
+		padding-left: 5%;
 		color: white;
 		font-size: 3em;
 		text-align: center;
@@ -127,13 +128,24 @@
 		flex-wrap: wrap;
 	}
 
-	.status-img {
+	.status-img, .status-img-lower {
 		object-fit: contain;
 		width: 200px;
 		height: 200px;
 	}
 
+	.status-img {
+		transform: scaleX(-1);
+	}
+
+	.home-button {
+		color: white;
+		font-size: xx-large;
+	}
+
 	.header-img {
+		transform: scaleX(-1);
+		float: right;
 		object-fit: contain;
 		width: 100px;
 		height: 100px;
