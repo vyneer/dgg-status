@@ -76,7 +76,7 @@
 				{#each data5m as result}
 					<div class="status-text-small">
 						{#if result.link.includes("strims.gg")}
-							<a rel="stylesheet" href="{result.link}">{result.link}</a> ({result.count} {#if result.count == 1} embed{:else} embeds{/if})
+							<a rel="stylesheet" href="https://{result.link}">{result.link.split("/")[1] + result.link.split("/")[2]}</a> ({result.count} {#if result.count == 1} embed{:else} embeds{/if})
 						{:else}
 							<a rel="stylesheet" href="https://destiny.gg/bigscreen{result.link}">{result.link}</a> ({result.count} {#if result.count == 1} embed{:else} embeds{/if})
 						{/if}
@@ -103,7 +103,7 @@
 				{#each data30m as result}
 					<div class="status-text-small">
 						{#if result.link.includes("strims.gg")}
-							<a rel="stylesheet" href="{result.link}">{result.link}</a> ({result.count} {#if result.count == 1} embed{:else} embeds{/if})
+							<a rel="stylesheet" href="https://{result.link}">{result.link.split("/")[1] + result.link.split("/")[2]}</a> ({result.count} {#if result.count == 1} embed{:else} embeds{/if})
 						{:else}
 							<a rel="stylesheet" href="https://destiny.gg/bigscreen{result.link}">{result.link}</a> ({result.count} {#if result.count == 1} embed{:else} embeds{/if})
 						{/if}
@@ -130,7 +130,7 @@
 				{#each dataLast as result}
 					<div class="status-text-small">
 						{#if result.link.includes("strims.gg")}
-							({dayjs.unix(result.timestamp).format("HH:mm:ss")}) <a rel="stylesheet" href="{result.link}">{result.link}</a>
+							({dayjs.unix(result.timestamp).format("HH:mm:ss")}) <a rel="stylesheet" href="https://{result.link}">{result.link.split("/")[1] + result.link.split("/")[2]}</a>
 						{:else}
 							({dayjs.unix(result.timestamp).format("HH:mm:ss")}) <a rel="stylesheet" href="https://destiny.gg/bigscreen{result.link}">{result.link}</a>
 						{/if}
