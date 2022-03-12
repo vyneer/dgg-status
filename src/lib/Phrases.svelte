@@ -20,7 +20,7 @@
 			return response.ok;
 		} else {
 			successCheck = false;
-			throw new Error(response.status);
+			throw new Error(`${response.status}`);
 		}
 	}
 </script>

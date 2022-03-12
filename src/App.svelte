@@ -1,46 +1,47 @@
-<script>
-	import Nuke from "./Nuke.svelte";
-	import Mutelinks from "./Mutelinks.svelte";
-	import Embeds from "./Embeds.svelte";
-	import Phrases from "./Phrases.svelte";
+<script lang="ts">
+	import Nuke from "./lib/Nuke.svelte";
+	import Mutelinks from "./lib/Mutelinks.svelte";
+	import Embeds from "./lib/Embeds.svelte";
+	import Phrases from "./lib/Phrases.svelte";
+
+	import chuurch0 from "./assets/chuurch0.png"
+	import chuurch1 from "./assets/chuurch1.png"
+	import chuurch2 from "./assets/chuurch2.png"
+	import drownedChuurch0 from "./assets/drowned_chuurch0.png"
+	import drownedChuurch1 from "./assets/drowned_chuurch1.png"
+	import drownedChuurch2 from "./assets/drowned_chuurch2.png"
+	import nukedChuurch0 from "./assets/nuked_chuurch0.png"
+	import nukedChuurch1 from "./assets/nuked_chuurch1.png"
+	import nukedChuurch2 from "./assets/nuked_chuurch2.png"
+
+	const chuurch = [chuurch0, chuurch1, chuurch2]
+	const drownedChuurch = [drownedChuurch0, drownedChuurch1, drownedChuurch2]
+	const nukedChuurch = [nukedChuurch0, nukedChuurch1, nukedChuurch2]
+
+	import embed0 from "./assets/embed0.png"
+	import embed1 from "./assets/embed1.png"
+	import embed2 from "./assets/embed2.png"
+
+	const embeds = [embed0, embed1, embed2]
+
+	import offline from "./assets/offline.png"
+	import online from "./assets/online.png"
+
+	import cam from "./assets/cam.png"
+	
 	let nukeSuccess;
 	let linksSuccess;
 	let embedsSuccess;
 	let phrasesSuccess;
 	let onlineSuccess;
 
-	let src1;
-	let src1_nuked;
-	let src2;
-	let src2_drowned;
-	let src3;
-	let src3_embed;
-	let src4;
-
-	let loadImages = () => {
-		let src1_number = getRandomInt(3);
-		let src2_number = getRandomInt(3);
-		let src3_number = getRandomInt(3);
-		let src4_number = getRandomInt(3);
-		src1 = `/status/images/chuurch${src1_number}.png`;
-		src1_nuked = `/status/images/nuked_chuurch${src1_number}.png`;
-		src2 = `/status/images/chuurch${src2_number}.png`;
-		src2_drowned = `/status/images/drowned_chuurch${src2_number}.png`;
-		src3 = `/status/images/offline.png`;
-		src3_embed = `/status/images/embed${src3_number}.png`;
-		src4 = `/status/images/chuurch${src4_number}.png`;
-	}
-
-	function getRandomInt(max) {
-  		return Math.floor(Math.random() * Math.floor(max));
-	}
+	let embedSrc1 = embeds[(Math.random() * embeds.length) | 0];
+	let embedSrc2 = offline;
 
 	function changePic() {
-		src3 = `/status/images/online.png`;
-		src3_embed = `/status/images/online.png`;
+		embedSrc1 = online;
+		embedSrc2 = online;
 	}
-
-	loadImages();
 </script>
 
 
@@ -48,48 +49,48 @@
 	<a href="https://vyneer.me"><i class="home-button fas fa-home"></i></a>
 	<h1>d.gg chat status</h1>
 
-	<img src="/status/images/cam.png" alt="Camera" class="header-img">
+	<img src={cam} alt="Camera" class="header-img">
 </header>
 
 <main>
 	<div class="status-element">
 		{#if nukeSuccess}
-			<img src={src1_nuked} alt="Chuurch Meme" class="status-img">
+			<img src={nukedChuurch[(Math.random() * nukedChuurch.length) | 0]} alt="Chuurch Meme" class="status-img">
 		{:else}
-			<img src={src1} alt="Chuurch Meme" class="status-img">
+			<img src={chuurch[(Math.random() * chuurch.length) | 0]} alt="Chuurch Meme" class="status-img">
 		{/if}
 		<Nuke bind:successCheck={nukeSuccess}/>
 	</div>
 	<div class="status-element">
 		{#if linksSuccess}
-			<img src={src2_drowned} alt="Chuurch Meme" class="status-img">
+			<img src={drownedChuurch[(Math.random() * drownedChuurch.length) | 0]} alt="Chuurch Meme" class="status-img">
 		{:else}
-			<img src={src2} alt="Chuurch Meme" class="status-img">
+			<img src={chuurch[(Math.random() * chuurch.length) | 0]} alt="Chuurch Meme" class="status-img">
 		{/if}
 		<Mutelinks bind:successCheck={linksSuccess}/>
 	</div>
 	<div class="status-element">
-		<img src={src4} alt="Chuurch Meme" class="status-img">
+		<img src={chuurch[(Math.random() * chuurch.length) | 0]} alt="Chuurch Meme" class="status-img">
 		<Phrases bind:successCheck={phrasesSuccess}></Phrases>
 	</div>
 	<div class="status-element">
 		{#if embedsSuccess}
-			<img src={src3_embed} alt="Happy Peepo watching a stream" class="status-img-lower">
+			<img src={embedSrc1} alt="Happy Peepo watching a stream" class="status-img-lower">
 		{#await onlineSuccess}
 			<div class="status-text-small-no-width">Loading Steven's online status...</div>
 		{:then result}
 			{#if result}
-				{changePic() || ""}
+				{changePic()}
 				<a href="https://destiny.gg/bigscreen"><div class="status-text-no-width active">Steven is online!</div></a>
 			{/if}
 		{/await}
 		{:else}
-			<img src={src3} alt="Sad peepo looking at Destiny's offline screen" class="status-img-lower">
+			<img src={embedSrc2} alt="Sad peepo looking at Destiny's offline screen" class="status-img-lower">
 			{#await onlineSuccess}
 			<div class="status-text-small-no-width">Loading Steven's online status...</div>
 			{:then result}
 				{#if result}
-					{changePic() || ""}
+					{changePic()}
 					<a href="https://destiny.gg/bigscreen"><div class="status-text-no-width active">Steven is online!</div></a>
 				{/if}
 			{/await}
