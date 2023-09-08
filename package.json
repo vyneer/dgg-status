@@ -20,6 +20,8 @@
     "vite": "^2.8.0"
   },
   "dependencies": {
-    "dayjs": "^1.10.8"
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "dayjs": "^1.10.8",
+    "svelte-fa": "^3.0.4"
   }
 }

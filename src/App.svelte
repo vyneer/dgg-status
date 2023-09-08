@@ -1,4 +1,7 @@
 <script lang="ts">
+	import Fa from 'svelte-fa'
+	import { faHome } from '@fortawesome/free-solid-svg-icons'
+
 	import Nuke from "./lib/Nuke.svelte";
 	import Mutelinks from "./lib/Mutelinks.svelte";
 	import Embeds from "./lib/Embeds.svelte";
@@ -46,7 +49,7 @@
 
 
 <header>
-	<a href="https://vyneer.me"><i class="home-button fas fa-home"></i></a>
+	<a class="home-button" href="https://vyneer.me"><Fa icon={faHome} /></a>
 	<h1>d.gg chat status</h1>
 
 	<img src={cam} alt="Camera" class="header-img">
